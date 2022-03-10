@@ -1,4 +1,3 @@
-from os import truncate
 import pandas as pd
 import numpy as np
 
