@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 series = input("Enter series title: ")
 season = input("Enter season: ")
