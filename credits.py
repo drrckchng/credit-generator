@@ -1,19 +1,27 @@
 import pandas as pd
 
+# User input
 series = input("Enter series title: ")
 season = input("Enter season: ")
 
+# Read file path
 with open('excel_path.txt', 'r') as f :
 	excel_file_path = f.read()
 
+# Convert XSLX->CSV->Dataframe (come back later to remove extra step)
 df_excel = pd.read_excel(excel_file_path)
 df_excel.to_csv(r"csv\credits.csv", index=None, header=True)
 df = pd.DataFrame(pd.read_csv(r"csv\credits.csv", low_memory=False))
+
+# Filter dataframe for series and season
 season_match = df[df['Season'] == int(season)].reset_index(drop=True)
 row_match = season_match[season_match['Series'].str.match(series)].reset_index(drop=True)
 cols = ['Season', 'Episode']
+
+# Cleanup
 row_match[cols] = row_match[cols].astype(int)
 row_match = row_match.fillna("N/A")
+
 txt_file = open(r"credits_txt\credits_"+ series + season + ".txt", "w")
 txt_file.write(series + " Season " + str(row_match.iloc[0]['Season']) + "\n \n")
 
@@ -43,7 +51,8 @@ for x in row_match.index:
 		"Thumbnail Designer - " + str(row_match.iloc[x]['Thumbnail']),
 		"CCO - " + str(row_match.iloc[x]['CCO'] + "\n")
 	]
-
+	
+# Remove empty rows
 	for i in episodeCredits:
 		if i[-3:] != "N/A":
 			txt_file.write(i + "\n")
