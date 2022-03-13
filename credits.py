@@ -52,7 +52,7 @@ for x in row_match.index:
 		"CCO - " + str(row_match.iloc[x]['CCO'] + "\n")
 	]
 	
-# Remove empty rows
+	# Remove empty rows
 	for i in episodeCredits:
 		if i[-3:] != "N/A":
 			txt_file.write(i + "\n")
