@@ -11,7 +11,7 @@ Returns a text file of all the credits for the particular season.
 * Filters dataframe based on user input
 * Formats text file to specified standard
 
-[Example result](https://youtu.be/UAkkjSq3joI?t=189)
+[Example result](https://youtu.be/XAo0sPjxQOI?t=193)
 **Description also contains the example output**
 
 
